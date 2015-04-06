@@ -33,9 +33,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'react-rails', github: 'reactjs/react-rails'
+gem 'bootstrap-sass'
+gem 'bourbon' #framework do SASS, animacje itd.
+gem 'font-awesome-sass' #ikony
+gem 'draper' #dekoratory ,więcej info na https://github.com/drapergem/draper
+gem 'fog' #interfejs komunikacji z Amazon S3, tam wygodnie się trzyma np. zdjęcia https://github.com/fog/fog
+gem 'simple_form' # https://github.com/plataformatec/simple_form
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -45,5 +53,13 @@ group :development, :test do
   
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'dotenv-rails' # przydatne do zmiennych globalnych
 end
 
+group :development do
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug' #debugger
+  gem 'did_you_mean'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+end
