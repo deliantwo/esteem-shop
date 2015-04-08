@@ -39,6 +39,7 @@ gem 'font-awesome-sass' #ikony
 gem 'draper' #dekoratory ,więcej info na https://github.com/drapergem/draper
 gem 'fog' #interfejs komunikacji z Amazon S3, tam wygodnie się trzyma np. zdjęcia https://github.com/fog/fog
 gem 'simple_form' # https://github.com/plataformatec/simple_form
+gem 'devise' # https://github.com/plataformatec/devise
 
 
 group :development, :test do
