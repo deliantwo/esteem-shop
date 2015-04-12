@@ -58,9 +58,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'pry-byebug' #debugger
-  gem 'did_you_mean'
-  gem 'binding_of_caller'
-  gem 'better_errors'
+  #gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  #gem 'pry-byebug' #debugger
+  #gem 'did_you_mean'
+  #gem 'binding_of_caller'
+  #gem 'better_errors'
 end
