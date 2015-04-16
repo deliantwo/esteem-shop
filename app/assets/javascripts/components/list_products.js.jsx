@@ -49,7 +49,6 @@ var ListProducts = React.createClass({
         return <div>
         <div className="col-md-3">
         <ul>
-        <li>{this.state.greeting}</li>
           <li><a id="RTS-category" onClick={this.handleCategoryChange}>RTS</a></li>
           <li><a id="RPG-category" onClick={this.handleCategoryChange}>RPG</a></li>
           <li>Category3</li>
@@ -61,7 +60,6 @@ var ListProducts = React.createClass({
         </ul>
             <input id="search-input" type="text" className="form-control" placeholder="Search" ></input>
             <button onClick={this.handleSearchButton} id="search-btn" type="button" className="btn btn-default">Search</button>
-            <button onClick={this.testAjaxSearch} id="search-btn2" type="button" className="btn btn-default">Search2</button>
         </div>
           </div>
           
