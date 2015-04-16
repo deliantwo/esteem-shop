@@ -9,22 +9,14 @@ var ListProducts = React.createClass({
     },
     testAjaxSearch: function (action ) {
       var global_this = this
-      this.props.rows = [];
-      var temprows = [];
+      this.setState({rows: []})
       var json_getter = $.getJSON( "search.json", function( data ) {
         $.each(data, function(index, element) {
-          temprows.push(element.name);
-        $('body').append($('<div>', {
-            text: JSON.stringify(element.name)
-        }));
+          var temp = global_this.state.rows
+          temp.push(<li> {element.name} </li>)
+          global_this.setState({rows: temp})
     });
       })
-      json_getter.complete(function() {
-        for (var i=0; i<temprows.length; i++){
-          global_this.props.rows.push(<li> {temprows[i]} </li>)
-        }
-        global_this.setState({greeting: 'dupa2'})
-      });
     },
   handleSearchButton: function() {
       var global_this = this
