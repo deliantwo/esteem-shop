@@ -2,18 +2,17 @@ var ListProducts = React.createClass({
     getInitialState: function() {
       return {
         greeting: this.props.name,
-        products: this.props.products,
         rows: [],
         search_active: false
       };
     },
-    testAjaxSearch: function (action ) {
+    componentDidMount: function (action ) {
       var global_this = this
       this.setState({rows: []})
       var json_getter = $.getJSON( "search.json", function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<li> {element.name} </li>)
+          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
           global_this.setState({rows: temp})
     });
       })

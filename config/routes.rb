@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'games/show'
+
   devise_for :users
+  resources :games
   root to: "homepage#home" # for devise purposes, can be changed later
   get '/search' => 'homepage#search', as: :search
   
