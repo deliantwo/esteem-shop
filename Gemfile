@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,7 +40,6 @@ gem 'draper' #dekoratory ,więcej info na https://github.com/drapergem/draper
 gem 'fog' #interfejs komunikacji z Amazon S3, tam wygodnie się trzyma np. zdjęcia https://github.com/fog/fog
 gem 'simple_form' # https://github.com/plataformatec/simple_form
 gem 'devise' # https://github.com/plataformatec/devise
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

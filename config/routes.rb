@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  root to: "home#index" # for devise purposes, can be changed later
+  root to: "homepage#home" # for devise purposes, can be changed later
+  get '/search' => 'homepage#search', as: :search
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
