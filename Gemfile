@@ -40,7 +40,7 @@ gem 'draper' #dekoratory ,więcej info na https://github.com/drapergem/draper
 gem 'fog' #interfejs komunikacji z Amazon S3, tam wygodnie się trzyma np. zdjęcia https://github.com/fog/fog
 gem 'simple_form' # https://github.com/plataformatec/simple_form
 gem 'devise' # https://github.com/plataformatec/devise
-
+gem 'acts_as_shopping_cart', '~> 0.2.1' #koszyk https://github.com/crowdint/acts_as_shopping_cart
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
