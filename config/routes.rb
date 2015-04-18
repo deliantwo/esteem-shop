@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :games
   root to: "homepage#home" # for devise purposes, can be changed later
   get '/search' => 'homepage#search', as: :search
+  get '/update_cart' => 'homepage#update_cart', as: :update_cart
+  get '/cart_status' => 'homepage#cart_status', as: :cart_status
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
