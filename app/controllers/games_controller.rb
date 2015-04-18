@@ -5,12 +5,12 @@ class GamesController < ApplicationController
     if id = params[:id]
       @game = Game.find(id)
       if ppg = PricePlatformGame.find_by(platform: Platform.find_by(name: "Steam"), game: Game.find(id))
-        @steam_price = ppg.price + (ppg.price * (Vat.last.value / 100.00))
+        @steam_price = ppg.price + (ppg.price * (Vat.find(Rails.application.config.current_vat_id).value / 100.00))
       else
         @steam_price = "Towar niedostępny"
       end
       if ppg = PricePlatformGame.find_by(platform: Platform.find_by(name: "Origin"), game: Game.find(id))
-        @origin_price = ppg.price + (ppg.price * (Vat.last.value / 100.00))
+        @origin_price = ppg.price + (ppg.price * (Vat.find(Rails.application.config.current_vat_id).value / 100.00))
       else
         @origin_price = "Towar niedostępny"
       end

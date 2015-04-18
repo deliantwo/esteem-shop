@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 
 module Esteem
   class Application < Rails::Application
+    config.current_vat_id = 1
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
