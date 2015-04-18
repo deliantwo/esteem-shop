@@ -25,7 +25,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<li> {element.name} </li>)
+          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
           global_this.setState({rows: temp})
     });
       })
@@ -39,7 +39,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value +"&category=" + category_name, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<li> {element.name} </li>)
+          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
           global_this.setState({rows: temp})
     });
       })
