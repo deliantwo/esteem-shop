@@ -26,7 +26,23 @@ textarea {
   }
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.panel.no-margin {
+  margin: 0;
+}
+
 /* typography */
+
+span.buytext {
+  font-size: 24px;
+}
+
+/*
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -52,9 +68,11 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
+*/
 
 /* header */
+
+
 
 #logo {
   float: left;
