@@ -7,7 +7,9 @@ var ManageCart = React.createClass({
         origin_price: this.props.origin_price,
         steamAction: "Nie załadowano danych",
         originAction: "Nie załadowano danych",
-        shopping_cart_id: this.props.shopping_cart_id
+        shopping_cart_id: this.props.shopping_cart_id,
+        steam_img_url: this.props.steam_img_url,
+        origin_img_url: this.props.origin_img_url
       };
     },
     componentDidMount: function (event) {
@@ -62,20 +64,18 @@ var ManageCart = React.createClass({
       }
     },
     render: function() {
-        return <div>
-        <table class="table table-bordered">
+        return <table className="table table-bordered">
             <tr>
-                <td><img src="<%= asset_path 'steam_20x20.png' %>" alt="steam"></img></td>
+                <td><img src={this.state.steam_img_url} alt="steam"></img></td>
                 <td>{this.state.steam_price} PLN</td>
                 <td><a id="steam-cart" onClick={this.updateCart}>{this.state.steamAction}</a></td>
             </tr>
             <tr>
-                <td><img src="<%= asset_path 'origin_20x20.png' %>" alt="origin"></img></td>
+                <td><img src={this.state.origin_img_url} alt="origin"></img></td>
                 <td>{this.state.origin_price} PLN</td>
                 <td><a id="origin-cart" onClick={this.updateCart}>{this.state.originAction}</a></td>
             </tr>
         </table>
-          </div>
           
           
     }
