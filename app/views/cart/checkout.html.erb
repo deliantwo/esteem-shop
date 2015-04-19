@@ -19,9 +19,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% iterator=1 %>
                     <% @shopping_cart.shopping_cart_items.each do |i| %>
                     <tr>
-                        <td><%= i.id %></td>
+                        <td><%= iterator %></td>
                         <td><a href="#"><%= i.item.game.name %></a>
                         </td>
                         <td><%= i.item.platform.name %></td>
@@ -29,6 +30,7 @@
                         <td><%= quantity = i.quantity %></td>
                         <td><%= price * quantity %> zł</td>
                     </tr>
+                    <% iterator+=1 %>
                     <% end %>
                 </tbody>
             </table>

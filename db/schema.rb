@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150417001857) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,7 +120,7 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vats", force: :cascade do |t|
-    t.integer  "value"
+    t.decimal  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
