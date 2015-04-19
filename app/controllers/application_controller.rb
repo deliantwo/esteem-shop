@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
 
   def set_shopping_cart
     if id = session[:cart_id]
-      @shopping_cart = ShoppingCart.find(id)
+      begin
+        @shopping_cart = ShoppingCart.find(id)
+      rescue ActiveRecord::RecordNotFound
+        @shopping_cart = ShoppingCart.create
+        session[:cart_id] = @shopping_cart.id
+      end
     else
       @shopping_cart = ShoppingCart.create
       session[:cart_id] = @shopping_cart.id
