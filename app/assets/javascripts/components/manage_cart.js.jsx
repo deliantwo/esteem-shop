@@ -36,6 +36,7 @@ var ManageCart = React.createClass({
       })
     },
     updateCart: function(event) {
+      PubSub.publish('updateCartButton:onClick')
       var action = event.target.id
       var global_this = this
       if(action == "steam-cart") {

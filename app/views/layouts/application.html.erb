@@ -36,16 +36,9 @@
               <% end %>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Koszyk<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <% @shopping_cart.shopping_cart_items.each do |d| %>
-                <li><%= link_to d.item.game.name, root_path + "games/" + d.item.game.id.to_s  %></li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
+          
+                <%= react_component('UpdateCartWidget', shopping_cart_id: @shopping_cart.id, :prerender => true) %>
+              
         </nav>
       </div>
     </header>

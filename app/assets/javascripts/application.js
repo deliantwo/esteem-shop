@@ -18,3 +18,5 @@
 //= require components
 //= require_tree .
 //= require bootstrap
+//= require pubsub
+//= require js-routes

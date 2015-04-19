@@ -49,4 +49,25 @@ class HomepageController < ApplicationController
       render json: {status: "error"}, status: 200
     end
   end
+  
+  def cart_content
+    json = {}
+    if id = [params[:shopping_cart_id]]
+      shopping_cart = ShoppingCart.find_by(id: id)
+      shopping_cart.shopping_cart_items.each do |d|
+        unless json[d.item.game.id]
+          json[d.item.game.id] = d.item.game.name + " - " + d.item.platform.name
+        else
+          json[d.item.game.id] = json[d.item.game.id] + ", " + d.item.platform.name
+        end
+      end
+      if json == {}
+        render json: {status: "empty"}, status: 200
+      else
+        render json: json, status: 200
+      end
+    else
+      render json: {status: "error"}, status: 200
+    end
+  end
 end
