@@ -47,7 +47,7 @@ var ListProducts = React.createClass({
 
     render: function() {
         return <div>
-        <div className="col-md-3">
+        <div className="col-md-4">
         <ul>
           <li><a id="RTS-category" onClick={this.handleCategoryChange}>RTS</a></li>
           <li><a id="RPG-category" onClick={this.handleCategoryChange}>RPG</a></li>

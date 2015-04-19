@@ -64,7 +64,8 @@ var ManageCart = React.createClass({
       }
     },
     render: function() {
-        return <table className="table table-bordered">
+        return <div className="panel panel-default text-center no-margin">
+        <table className="table table-bordered">
             <tr>
                 <td><img src={this.state.steam_img_url} alt="steam"></img></td>
                 <td>{this.state.steam_price} PLN</td>
@@ -76,6 +77,7 @@ var ManageCart = React.createClass({
                 <td><a id="origin-cart" onClick={this.updateCart}>{this.state.originAction}</a></td>
             </tr>
         </table>
+        </div>
           
           
     }
