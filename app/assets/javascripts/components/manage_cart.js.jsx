@@ -70,7 +70,7 @@ var ManageCart = React.createClass({
                 <td><a id="steam-cart" onClick={this.updateCart}>{this.state.steamAction}</a></td>
             </tr>
             <tr>
-                <td><img src="<%= asset_path 'origin_20x20.png' %>" alt="steam"></img></td>
+                <td><img src="<%= asset_path 'origin_20x20.png' %>" alt="origin"></img></td>
                 <td>{this.state.origin_price} PLN</td>
                 <td><a id="origin-cart" onClick={this.updateCart}>{this.state.originAction}</a></td>
             </tr>
