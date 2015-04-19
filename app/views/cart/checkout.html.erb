@@ -19,28 +19,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% @shopping_cart.shopping_cart_items.each do |i| %>
                     <tr>
-                        <td>1</td>
-                        <td><a href="#">Totally not GTAV</a>
+                        <td><%= i.id %></td>
+                        <td><a href="#"><%= i.item.game.name %></a>
                         </td>
-                        <td>Steam</td>
-                        <td>123,00 zł</td>
-                        <td>1</td>
-                        <td>123,00 zł</td>
+                        <td><%= i.item.platform.name %></td>
+                        <td><%= price = i.item.price + (i.item.price * @vat) %> zł</td>
+                        <td><%= quantity = i.quantity %></td>
+                        <td><%= price * quantity %> zł</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="#">Plague Inc</a>
-                        </td>
-                        <td>Steam</td>
-                        <td>86,10 zł</td>
-                        <td>2</td>
-                        <td>172,20 zł</td>
-                    </tr>
+                    <% end %>
                 </tbody>
             </table>
             <div class="panel-body text-right">
-                <h3>Razem: <strong>295,20 zł</strong></h3>
+                <h3>Razem: <strong><%= @shopping_cart.total %> zł</strong></h3>
                 <a class="btn btn-primary" href="#">Potwierdź</a>
             </div>
         </div>
