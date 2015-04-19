@@ -29,6 +29,9 @@
     <div class="col-md-3">
         <div class="panel panel-default">
               <div class="panel-body">
+                  <% @shopping_cart.shopping_cart_items.each do |d| %> <!-- to tylko debug info -->
+                  <%= d.item.game.name + " " + d.item.platform.name %>
+                  <% end %><br>
                 Tytuł: <i><%= @game.name %></i><br>
                 Gatunek: <i><a href="#"><%= @game.category.name %></a></i><br>
                 Producent: <i><a href="#"><%= @game.producer.name %></a></i><br>

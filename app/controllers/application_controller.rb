@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
   private
 
   def set_shopping_cart
-    @shopping_cart = ShoppingCart.create
+    if id = session[:cart_id]
+      @shopping_cart = ShoppingCart.find(id)
+    else
+      @shopping_cart = ShoppingCart.create
+      session[:cart_id] = @shopping_cart.id
+    end
   end
   
 end

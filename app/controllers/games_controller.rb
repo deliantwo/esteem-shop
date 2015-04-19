@@ -2,9 +2,6 @@ class GamesController < ApplicationController
   def index
   end
   def show
-    p = PricePlatformGame.find(1)
-    @shopping_cart.add(p, p.price)
-    @testtt = @shopping_cart.total
     if id = params[:id]
       @game = Game.find(id)
       if ppg = PricePlatformGame.find_by(platform: Platform.find_by(name: "Steam"), game: Game.find(id))
