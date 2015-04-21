@@ -4,6 +4,10 @@ class HomepageController < ApplicationController
     @products = @products.map do |u|
       { :id => u.id, :name => u.name, :description => u.description, :category => u.category.name, :producer => u.producer.name, :publisher => u.publisher.name, :image_url => u.image_url }
     end
+    @categories = Category.all
+    @categories = @categories.map do |u|
+      { :name => u.name }
+    end
   end
   
   def search

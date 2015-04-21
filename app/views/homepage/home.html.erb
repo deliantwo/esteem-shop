@@ -1,6 +1,6 @@
 <% provide(:title, 'eSteem') %>
 <div class="row">
-  <%= react_component('ListProducts', name: "Initial", products: @products, :prerender => true) %>
+  <%= react_component('ListProducts', name: "Initial", products: @products, categories: @categories, :prerender => true) %>
 
 </div>
 

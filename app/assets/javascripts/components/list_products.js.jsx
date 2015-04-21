@@ -3,6 +3,8 @@ var ListProducts = React.createClass({
       return {
         greeting: this.props.name,
         rows: [],
+        categories_rows: [],
+        categories: this.props.categories,
         search_active: false
       };
     },
@@ -16,6 +18,11 @@ var ListProducts = React.createClass({
           global_this.setState({rows: temp})
     });
       })
+      for(var i=0;i<this.state.categories.length;i++) {
+        var temp = global_this.state.categories_rows
+        temp.push(<li><a id={this.state.categories[i].name + "-category"} onClick={this.handleCategoryChange}>{this.state.categories[i].name}</a></li>)
+        global_this.setState({categories_rows: temp})
+      }
     },
   handleSearchButton: function() {
       var global_this = this
@@ -49,9 +56,7 @@ var ListProducts = React.createClass({
         return <div>
         <div className="col-md-4">
         <ul>
-          <li><a id="RTS-category" onClick={this.handleCategoryChange}>RTS</a></li>
-          <li><a id="RPG-category" onClick={this.handleCategoryChange}>RPG</a></li>
-          <li>Category3</li>
+          {this.state.categories_rows}
         </ul>
         </div>
         <div className="col-md-4" role="search">
