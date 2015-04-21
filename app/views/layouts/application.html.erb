@@ -37,7 +37,7 @@
             </li>
           </ul>
           
-                <%= react_component('UpdateCartWidget', shopping_cart_id: @shopping_cart.id, :prerender => true) %>
+                <%= react_component('UpdateCartWidget', shopping_cart_id: @shopping_cart.id, shopping_cart_token: session[:cart_token], :prerender => true) %>
               
         </nav>
       </div>

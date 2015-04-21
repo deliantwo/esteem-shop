@@ -13,10 +13,12 @@ class ApplicationController < ActionController::Base
       rescue ActiveRecord::RecordNotFound
         @shopping_cart = ShoppingCart.create
         session[:cart_id] = @shopping_cart.id
+        session[:cart_token] = SecureRandom.urlsafe_base64(16)
       end
     else
       @shopping_cart = ShoppingCart.create
       session[:cart_id] = @shopping_cart.id
+      session[:cart_token] = SecureRandom.urlsafe_base64(16)
     end
   end
   

@@ -3,7 +3,8 @@ var UpdateCartWidget = React.createClass({
       return {
         rows: [],
         shopping_cart_id: this.props.shopping_cart_id,
-        is_empty: 0
+        is_empty: 0,
+        shopping_cart_token: this.props.shopping_cart_token
       };
     },
     componentDidMount: function (event) {
@@ -22,7 +23,7 @@ var UpdateCartWidget = React.createClass({
     updateCart: function () {
       this.setState({rows: []})
       var global_this = this
-      $.getJSON( "../cart_content.json?shopping_cart_id=" + global_this.state.shopping_cart_id, function( data ) {
+      $.getJSON( "../cart_content.json?shopping_cart_id=" + global_this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
           $.each(data, function(index, element) {
             if(index == "status" & element == "empty") {
               var temp = global_this.state.rows

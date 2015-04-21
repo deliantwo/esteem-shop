@@ -114,3 +114,10 @@ footer {
     }
   }
 }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: white;
+  background-color: DimGray;
+  background-image: none;
+  filter: none;
+}

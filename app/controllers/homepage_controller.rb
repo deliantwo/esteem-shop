@@ -52,7 +52,7 @@ class HomepageController < ApplicationController
   
   def cart_content
     json = {}
-    if id = [params[:shopping_cart_id]]
+    if id = params[:shopping_cart_id] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find_by(id: id)
       shopping_cart.shopping_cart_items.each do |d|
         unless json[d.item.game.id]
