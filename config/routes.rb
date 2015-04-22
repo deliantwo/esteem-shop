@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/cart_status' => 'homepage#cart_status', as: :cart_status
   get '/cart_content' => 'homepage#cart_content', as: :cart_content
   get '/cart/checkout' => 'cart#checkout', as: :cart_checkout
+  get '/cart/detail_view' => 'cart#detail_view', as: :cart_detail_view
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
