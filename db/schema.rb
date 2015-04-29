@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   end
 
   create_table "sold_products", force: :cascade do |t|
-    t.integer  "transaction_id"
+    t.integer  "purchase_id"
     t.integer  "gamekey"
     t.integer  "vat_id"
     t.decimal  "price"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150417001857) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "status"
     t.datetime "created_at", null: false
