@@ -19,7 +19,14 @@ class HomepageController < ApplicationController
       games = games.where(category: Category.find_by(name: cat))
     end
     games = games.map do |u|
-      { :id => u.id, :name => u.name, :description => u.description, :category => u.category.name, :producer => u.producer.name, :publisher => u.publisher.name, :image_url => u.image_url }
+      price = 0
+      ppgs = PricePlatformGame.where(game: Game.find_by(name: u.name))
+      ppgs.each do |p|
+        if price < p.price
+          price = p.price
+        end
+      end
+      { :id => u.id, :name => u.name, :description => u.description, :category => u.category.name, :producer => u.producer.name, :publisher => u.publisher.name, :image_url => u.image_url, :price => price }
     end
     render json: games, status: 200
   end

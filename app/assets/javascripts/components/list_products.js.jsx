@@ -14,13 +14,13 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json", function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
       for(var i=0;i<this.state.categories.length;i++) {
         var temp = global_this.state.categories_rows
-        temp.push(<li><a id={this.state.categories[i].name + "-category"} onClick={this.handleCategoryChange}>{this.state.categories[i].name}</a></li>)
+        temp.push(<a className="list-group-item" id={this.state.categories[i].name + "-category"} onClick={this.handleCategoryChange}>{this.state.categories[i].name}</a>)
         global_this.setState({categories_rows: temp})
       }
     },
@@ -32,7 +32,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -46,7 +46,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value +"&category=" + category_name, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<a href={'games/' + element.id}><li> {element.name} </li></a>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -66,8 +66,7 @@ var ListProducts = React.createClass({
         <div className="col-md-3">
           <div className="list-group">
             <span className="list-group-item">Kategorie</span>
-            <a className="list-group-item" href="#">RTS</a>
-            <a className="list-group-item" href="#">Inny crap</a>
+            {this.state.categories_rows}
           </div>
         </div>
         <div className="col-md-8">
@@ -80,26 +79,8 @@ var ListProducts = React.createClass({
           
           <h1>Polecane gry</h1>
           
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <h2 className="nomargin">Plague Inc</h2>
-              <p>Kategoria: <i><a href="#">RTS</a></i></p>
-              <p>Opis gry tutaj powinien być</p>
-              <h2 className="nomargin text-right"><small>Cena:</small> 100zł</h2>
-            </div>
-          </div>
-          
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <h2 className="nomargin">Inne coś</h2>
-              <p>Kategoria: <i><a href="#">RTS</a></i></p>
-              <p>Opis gry tutaj powinien być</p>
-              <h2 className="nomargin text-right"><small>Cena:</small> 85zł</h2>
-            </div>
-          </div>
-          <ul>
-            {this.state.rows}
-          </ul>
+          {this.state.rows}
+
         </div>
           </div>
           
