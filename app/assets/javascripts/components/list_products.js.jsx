@@ -51,20 +51,55 @@ var ListProducts = React.createClass({
     });
       })
     },
+    
+    formattedColumns: function() {
+      var html = "";
+      for(var i = 0; i < this.state.categories_rows.length; ++i)
+      {
+        html += "<a className=\"list-group-item\">this.state.categories_rows[i].name</a>";
+      }
+      return html;
+    },
 
     render: function() {
-        return <div>
-        <div className="col-md-4">
-        <ul>
-          {this.state.categories_rows}
-        </ul>
+        return <div className="row">
+        <div className="col-md-3">
+          <div className="list-group">
+            <span className="list-group-item">Kategorie</span>
+            <a className="list-group-item" href="#">RTS</a>
+            <a className="list-group-item" href="#">Inny crap</a>
+          </div>
         </div>
-        <div className="col-md-4" role="search">
-        <ul>
-        {this.state.rows}
-        </ul>
-            <input id="search-input" type="text" className="form-control" placeholder="Search" ></input>
-            <button onClick={this.handleSearchButton} id="search-btn" type="button" className="btn btn-default">Search</button>
+        <div className="col-md-8">
+          <div className="input-group" role="search">
+            <input id="search-input" type="text" className="form-control" placeholder="Search"></input>
+            <span className="input-group-btn">
+              <button onClick={this.handleSearchButton} id="search-btn" type="button" className="btn btn-default">Search</button>
+            </span>
+          </div>
+          
+          <h1>Polecane gry</h1>
+          
+          <div className="panel panel-default">
+            <div className="panel-body">
+              <h2 className="nomargin">Plague Inc</h2>
+              <p>Kategoria: <i><a href="#">RTS</a></i></p>
+              <p>Opis gry tutaj powinien być</p>
+              <h2 className="nomargin text-right"><small>Cena:</small> 100zł</h2>
+            </div>
+          </div>
+          
+          <div className="panel panel-default">
+            <div className="panel-body">
+              <h2 className="nomargin">Inne coś</h2>
+              <p>Kategoria: <i><a href="#">RTS</a></i></p>
+              <p>Opis gry tutaj powinien być</p>
+              <h2 className="nomargin text-right"><small>Cena:</small> 85zł</h2>
+            </div>
+          </div>
+          <ul>
+            {this.state.rows}
+          </ul>
         </div>
           </div>
           
