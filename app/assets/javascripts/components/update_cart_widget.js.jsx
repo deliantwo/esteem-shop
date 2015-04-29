@@ -48,7 +48,7 @@ var UpdateCartWidget = React.createClass({
               <ul className="dropdown-menu" role="menu">
         {this.state.rows}
         <li role="presentation" className="divider"></li>
-        <li><a href={Routes.cart_checkout_path()}> Kup </a></li>
+        <li><a href={Routes.cart_detail_view_path()}> Kup </a></li>
         </ul>
             </li>
           </ul>

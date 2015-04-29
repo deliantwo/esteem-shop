@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :gamekeys
-  has_many :transactions
+  has_many :purchases
 end
