@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   end
 
   create_table "price_platform_games", force: :cascade do |t|
-    t.decimal  "price"
+    t.decimal  "price",       precision: 10, scale: 2
     t.integer  "platform_id"
     t.integer  "game_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "producers", force: :cascade do |t|
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 20150417001857) do
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,18 +89,11 @@ ActiveRecord::Schema.define(version: 20150417001857) do
 
   create_table "sold_products", force: :cascade do |t|
     t.integer  "purchase_id"
-    t.integer  "gamekey"
+    t.integer  "gamekey_id"
     t.integer  "vat_id"
     t.decimal  "price"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

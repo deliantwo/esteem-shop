@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'payment/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'games/show'
 
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   resources :games
   root to: "homepage#home" # for devise purposes, can be changed later
   get '/search' => 'homepage#search', as: :search
+  
   get '/update_cart' => 'homepage#update_cart', as: :update_cart
   get '/cart_status' => 'homepage#cart_status', as: :cart_status
   get '/cart_content' => 'homepage#cart_content', as: :cart_content
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
   get '/cart/checkout' => 'cart#checkout', as: :cart_checkout
   get '/cart/detail_view' => 'cart#detail_view', as: :cart_detail_view
   
+  get '/payment/test' => 'payment#index', as: :payment_test
+  get '/payment/success' => 'payment#success', as: :payment_success
+  get '/payment/cancel' => 'payment#cancel', as: :payment_cancel
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

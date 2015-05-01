@@ -43,6 +43,7 @@ gem 'devise' # https://github.com/plataformatec/devise
 gem 'acts_as_shopping_cart', '~> 0.2.1' #koszyk https://github.com/crowdint/acts_as_shopping_cart
 gem "js-routes"
 gem 'rails_admin'
+gem 'paypal-express'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
