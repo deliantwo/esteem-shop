@@ -64,17 +64,31 @@ var ManageCart = React.createClass({
       })
       }
     },
+    
+    toFixed: function (value, precision) {
+    var precision = precision || 0,
+        power = Math.pow(10, precision),
+        absValue = Math.abs(Math.round(value * power)),
+        result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
+
+    if (precision > 0) {
+        var fraction = String(absValue % power),
+            padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
+        result += '.' + padding + fraction;
+    }
+    return result;
+},
     render: function() {
         return <div className="panel panel-default text-center no-margin">
         <table className="table table-bordered">
             <tr>
                 <td><img src={this.state.steam_img_url} alt="steam"></img></td>
-                <td>{this.state.steam_price} PLN</td>
+                <td>{this.toFixed(this.state.steam_price,2)} PLN</td>
                 <td><a id="steam-cart" onClick={this.updateCart}>{this.state.steamAction}</a></td>
             </tr>
             <tr>
                 <td><img src={this.state.origin_img_url} alt="origin"></img></td>
-                <td>{this.state.origin_price} PLN</td>
+                <td>{this.toFixed(this.state.origin_price,2)} PLN</td>
                 <td><a id="origin-cart" onClick={this.updateCart}>{this.state.originAction}</a></td>
             </tr>
         </table>

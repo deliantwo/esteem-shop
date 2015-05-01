@@ -81,4 +81,50 @@ class HomepageController < ApplicationController
       render json: {status: "error"}, status: 200
     end
   end
+  
+  def detail_cart_content
+    json = {}
+    iterator = 1
+    if id = params[:shopping_cart_id] and params[:shopping_cart_token] == session[:cart_token]
+      shopping_cart = ShoppingCart.find_by(id: id)
+      shopping_cart.shopping_cart_items.each do |d|
+        price = d.item.price + (d.item.price * @vat)
+        json[iterator] = { name: d.item.game.name, platform: d.item.platform, price: price, quantity: d.quantity }
+        iterator += 1
+      end
+      if json == {}
+        render json: {status: "empty"}, status: 200
+      else
+        render json: json, status: 200
+      end
+    else
+      render json: {status: "error"}, status: 200
+    end
+  end
+  
+  def change_quantity
+    quantity = params[:quantity].to_i
+    item_id = params[:item_id].to_i
+    if quantity < 0
+      render json: {status: "error"}, status: 200
+    
+    elsif id = params[:shopping_cart_id] and params[:shopping_cart_token] == session[:cart_token]
+      shopping_cart = ShoppingCart.find_by(id: id)
+      shopping_cart.shopping_cart_items[item_id].quantity = quantity
+      shopping_cart.shopping_cart_items[item_id].save
+      render json: {status: "success"}, status: 200
+    else
+      render json: {status: "error"}, status: 200
+    end
+  end
+  
+  def cart_total
+    if id = params[:shopping_cart_id] and params[:shopping_cart_token] == session[:cart_token]
+      shopping_cart = ShoppingCart.find_by(id: id)
+      total = shopping_cart.total
+      render json: {total: total}, status: 200
+    else
+      render json: {status: "error"}, status: 200
+    end
+  end
 end

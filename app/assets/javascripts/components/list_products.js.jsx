@@ -14,7 +14,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json", function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -32,7 +32,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -46,12 +46,25 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value +"&category=" + category_name, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{element.price + " zł"}</h2></div></div>)
+          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
           global_this.setState({rows: temp})
     });
       })
     },
     
+    toFixed: function (value, precision) {
+    var precision = precision || 0,
+        power = Math.pow(10, precision),
+        absValue = Math.abs(Math.round(value * power)),
+        result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
+
+    if (precision > 0) {
+        var fraction = String(absValue % power),
+            padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
+        result += '.' + padding + fraction;
+    }
+    return result;
+},
     formattedColumns: function() {
       var html = "";
       for(var i = 0; i < this.state.categories_rows.length; ++i)

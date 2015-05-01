@@ -3,40 +3,7 @@
         Szczegóły koszyka
     </h1>
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <p>Poniżej znajduje się zawartość Twojego koszyka. Kliknięcie w przycisk "przejdź dalej" spowoduje przejście na stronę podsumowania zamówienia, gdzie dokończysz transakcję.</p>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nazwa gry</th>
-                        <th>Platforma</th>
-                        <th>Cena brutto</th>
-                        <th>Liczba sztuk</th>
-                        <th>Wartość brutto</th>
-                        <th>Usuń produkt</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="#">Super gra</a>
-                        </td>
-                        <td>Steam</td>
-                        <td>100 zl</td>
-                        <td><input type="number" name="TUTAJ_ID_PRODUKTU_ZEBY_MOZNA_BYLO_ODNIESC_SIE_DO_KONKRETNEGO_PRODUKTU" min="0" max="99" value="1"></td>
-                        <td>200 zł</td>
-                        <td><a type="button" class="close" href="#" style="float: none;"><span aria-hidden="true">&times;</span></a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="panel-body text-right">
-                <h3>Razem: <strong>200 zł</strong></h3>
-                <a class="btn btn-primary" href="#">Przejdź dalej</a>
-            </div>
-        </div>
+        <%= react_component('DetailViewTable', shopping_cart_id: @shopping_cart.id, shopping_cart_token: session[:cart_token], :prerender => true) %>
     </div>
 
 </div>

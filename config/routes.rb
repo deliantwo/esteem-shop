@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/update_cart' => 'homepage#update_cart', as: :update_cart
   get '/cart_status' => 'homepage#cart_status', as: :cart_status
   get '/cart_content' => 'homepage#cart_content', as: :cart_content
+  get '/change_quantity' => 'homepage#change_quantity', as: :change_quantity
+  get '/cart_total' => 'homepage#cart_total', as: :cart_total
+  get '/detail_cart_content' => 'homepage#detail_cart_content', as: :detail_cart_content
   get '/cart/checkout' => 'cart#checkout', as: :cart_checkout
   get '/cart/detail_view' => 'cart#detail_view', as: :cart_detail_view
   
