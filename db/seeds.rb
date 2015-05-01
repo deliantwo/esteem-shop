@@ -20,5 +20,14 @@ PricePlatformGame.create(price: 80, platform: Platform.find_by(name: "Origin"), 
 PricePlatformGame.create(price: 100, platform: Platform.find_by(name: "Steam"), game: Game.find_by(name: "Totally not GTAV"))
 Gamekey.create(content: "XXXXXXXXXXX1", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc"), platform: Platform.find_by(name: "Steam")))
 Gamekey.create(content: "XXXXXXXXXXX2", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc"), platform: Platform.find_by(name: "Steam")))
-Gamekey.create(content: "XXXXXXXXXXX3", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc"), platform: Platform.find_by(name: "Steam")))
-Vat.create(value: 23)
+vat_23 = Vat.create(value: 23)
+
+test_user = User.new
+test_user.email = 'user@user.pl'
+test_user.password = '123456789'
+test_user.password_confirmation = '123456789'
+test_user.save!
+
+tu_game_key = Gamekey.create(user: test_user, content: "XXXXXXXXXXX3", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc"), platform: Platform.find_by(name: "Steam")))
+test_purchase = Purchase.create(status: 1, user: test_user)
+SoldProduct.create(gamekey: tu_game_key, vat: vat_23, price: 99.36, purchase: test_purchase) 

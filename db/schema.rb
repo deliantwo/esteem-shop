@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 20150417001857) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shopping_cart_items", force: :cascade do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
@@ -82,18 +89,11 @@ ActiveRecord::Schema.define(version: 20150417001857) do
 
   create_table "sold_products", force: :cascade do |t|
     t.integer  "purchase_id"
-    t.integer  "gamekey"
+    t.integer  "gamekey_id"
     t.integer  "vat_id"
     t.decimal  "price"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

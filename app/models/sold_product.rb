@@ -1,5 +1,5 @@
 class SoldProduct < ActiveRecord::Base
-    has_one :gamekey
-    belongs_to :purchases
+    belongs_to :gamekey
+    belongs_to :purchase
     belongs_to :vat
 end
