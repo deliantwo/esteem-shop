@@ -24,7 +24,7 @@ var ListProducts = React.createClass({
         global_this.setState({categories_rows: temp})
       }
     },
-  handleSearchButton: function() {
+  handleSearchButton: function(event) {
       var global_this = this
       var category_name = event.target.text
       this.setState({rows: []})
