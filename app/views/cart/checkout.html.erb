@@ -26,16 +26,17 @@
                         <td><a href="#"><%= i.item.game.name %></a>
                         </td>
                         <td><%= i.item.platform.name %></td>
-                        <td><%= price = i.item.price + (i.item.price * @vat) %> zł</td>
+                        <% price = i.item.price + (i.item.price * @vat) %>
+                        <td><%= sprintf( "%.2f", price) %> zł</td>
                         <td><%= quantity = i.quantity %></td>
-                        <td><%= price * quantity %> zł</td>
+                        <td><%= sprintf( "%.2f", price * quantity) %> zł</td>
                     </tr>
                     <% iterator+=1 %>
                     <% end %>
                 </tbody>
             </table>
             <div class="panel-body text-right">
-                <h3>Razem: <strong><%= @shopping_cart.total %> zł</strong></h3>
+                <h3>Razem: <strong><%= sprintf( "%.2f", @shopping_cart.total) %> zł</strong></h3>
                 <a class="btn btn-primary" href=<%= payment_test_path %>>Potwierdź</a>
             </div>
         </div>

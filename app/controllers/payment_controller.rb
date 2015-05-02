@@ -30,10 +30,9 @@ class PaymentController < ApplicationController
       'https://esteem-wojzag-2.c9.io/payment/cancel',
       paypal_options  # Optional
     )
-    
     current_purchase = Purchase.create(user: User.find_by(id: current_user.id), status: 0)
     @current_items.each do |i|
-      for k in 0..i.quantity do
+      for k in 0..i.quantity-1 do
         gamekey = Gamekey.find_by(price_platform_game: i.item, user: nil)
         #binding.pry
         #gamekey.user = User.find_by(id: current_user.id) # pending, by user przypadkiem nie dostał klucza nim skończy zakup
@@ -73,7 +72,7 @@ class PaymentController < ApplicationController
       products = SoldProduct.where(purchase: current_purchase)
       products.each do |p|
         p.gamekey.user = User.find(current_user.id)
-        p.save!
+        p.gamekey.save!
       end
       current_purchase.status = 1
       current_purchase.save!

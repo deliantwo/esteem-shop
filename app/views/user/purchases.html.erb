@@ -23,7 +23,7 @@
                     <tr>
                         <td><%= sp[1].name %></td>
                         <td><%= sp[2].name %></td>
-                        <td><%= sp[0].price %> zł</td>
+                        <td><%= sprintf( "%.2f", sp[0].price + (sp[0].price * @vat)) %> zł</td>
                         <td><%= sp[3].value %>%</td>
                         
                     </tr>
