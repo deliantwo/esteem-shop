@@ -1,5 +1,5 @@
 class PaymentController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authenticate_user!
   def index
     @current_items = @shopping_cart.shopping_cart_items
     @current_price = @shopping_cart.total

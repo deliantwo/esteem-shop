@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
     @vat = Vat.find(Rails.application.config.current_vat_id).value / 100.00
   end
   
+  def after_sign_in_path_for(user)
+        root_path
+  end
+  
 end
