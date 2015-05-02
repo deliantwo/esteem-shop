@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   end
 
   create_table "price_platform_games", force: :cascade do |t|
-    t.decimal  "price"
+    t.decimal  "price",       precision: 10, scale: 2
     t.integer  "platform_id"
     t.integer  "game_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "producers", force: :cascade do |t|
