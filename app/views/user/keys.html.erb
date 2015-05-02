@@ -1,0 +1,34 @@
+<div class="row">
+    <h1 class="page-header text-left">
+        Lista kupionych kluczy
+    </h1>
+    <div class="col-md-9">
+        
+        <div class="panel panel-default">
+              <div class="panel-body">
+                  <p>Poniżej znajduje się lista kluczy do gier, które kupiłeś.</p>
+              </div>
+              <table class="table">
+                  <thead>
+                    <tr>
+                        <th>Nazwa gry</th>
+                        <th>Platforma</th>
+                        <th>Klucz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @key_infos.each do |ki| %>
+                    <tr>
+                        <td><%= ki[0] %></td>
+                        <td><%= ki[1] %></td>
+                        <td><%= ki[2] %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+</div>
+
+

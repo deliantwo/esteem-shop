@@ -1,0 +1,40 @@
+<div class="row">
+    <h1 class="page-header text-left">
+        Historia zamówień
+    </h1>
+    <div class="col-md-9">
+        <% @purchases.each do |p| %>
+        <div class="panel panel-default">
+              <div class="panel-body">
+                <p>Zamówienie nr: <%= p[0].id %></p>
+                <p>Status zamówienia: <%= p[0].status %></p>
+              </div>
+              <table class="table">
+                  <thead>
+                    <tr>
+                        <th>Nazwa gry</th>
+                        <th>Platforma</th>
+                        <th>Cena brutto</th>
+                        <th>VAT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% p[1].each do |sp| %>
+                    <tr>
+                        <td><%= sp[1].name %></td>
+                        <td><%= sp[2].name %></td>
+                        <td><%= sp[0].price %> zł</td>
+                        <td><%= sp[3].value %>%</td>
+                        
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+        </div>
+        <% end %>
+    </div>
+
+    
+</div>
+
+
