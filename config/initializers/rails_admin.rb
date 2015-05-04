@@ -1,5 +1,14 @@
 RailsAdmin.config do |config|
 
+  # app name
+  config.main_app_name = ["eSteem", "Admin Panel"]
+  
+  # Devise
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
+
   ### Popular gems integration
 
   ## == Devise ==
