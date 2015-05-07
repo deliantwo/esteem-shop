@@ -1,5 +1,9 @@
-RailsAdmin.config do |config|
+require 'i18n'
+I18n.enforce_available_locales = false
+I18n.default_locale = :pl
 
+RailsAdmin.config do |config|
+  
   # app name
   config.main_app_name = ["eSteem", "Admin Panel"]
   
@@ -8,6 +12,8 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
+  
+  config.excluded_models = ["ShoppingCart", "ShoppingCartItem"]
 
   ### Popular gems integration
 
@@ -28,16 +34,23 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ["Platform"]
+    end
     export
     bulk_delete
-    show
-    edit
-    delete
+    show 
+    edit do
+      except ["Platform"]
+    end
+    delete do
+      except ["Platform"]
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
     # history_index
     # history_show
   end
+  
 end
