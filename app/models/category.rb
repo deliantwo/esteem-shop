@@ -5,7 +5,6 @@ class Category < ActiveRecord::Base
         label "Kategoria"
         label_plural "Kategorie"
         
-        field :id
         field :name do
             label "Nazwa"
         end

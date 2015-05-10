@@ -11,7 +11,6 @@ class Vat < ActiveRecord::Base
         label_plural "VAT"
         object_label_method  :custom_label_method
         
-        field :id
         field :value do
             label "Wartość"
         end

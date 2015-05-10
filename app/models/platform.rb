@@ -6,7 +6,6 @@ class Platform < ActiveRecord::Base
         label "Platforma"
         label_plural "Platformy"
         
-        field :id
         field :name do
             label "Nazwa"
         end

@@ -11,7 +11,6 @@ class Purchase < ActiveRecord::Base
         label_plural "Zamówienia"
         object_label_method  :custom_label_method
         
-        field :id
         field :user do
             label "Użytkownik"
         end

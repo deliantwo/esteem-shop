@@ -5,7 +5,6 @@ class Publisher < ActiveRecord::Base
         label "Wydawca"
         label_plural "Wydawcy"
         
-        field :id
         field :name do
             label "Nazwa"
         end

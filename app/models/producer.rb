@@ -5,7 +5,6 @@ class Producer < ActiveRecord::Base
         label "Producent"
         label_plural "Producenci"
         
-        field :id
         field :name do
             label "Nazwa"
         end

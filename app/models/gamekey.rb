@@ -12,7 +12,6 @@ class Gamekey < ActiveRecord::Base
         label_plural "Klucze"
         object_label_method  :custom_label_method
         
-        field :id
         field :user do
             label "Użytkownik"
         end

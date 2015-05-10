@@ -15,7 +15,6 @@ class PricePlatformGame < ActiveRecord::Base
         label_plural "PPGi"
         object_label_method  :custom_label_method
         
-        field :id
         field :game do
             label "Gra"
         end

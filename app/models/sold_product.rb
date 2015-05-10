@@ -15,7 +15,6 @@ class SoldProduct < ActiveRecord::Base
         label_plural "Sprzedane produkty"
         object_label_method  :custom_label_method
         
-        field :id
         field :purchase do
             label "Zamówienie"
         end

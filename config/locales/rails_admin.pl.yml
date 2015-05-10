@@ -38,6 +38,10 @@ pl:
       item: "Pozycja"
       message: "Wiadomość"
     actions:
+      add_keys:
+        menu: "Dodaj klucze"
+        title: "Dodaj klucze"
+        breadcrumb: "Dodaj klucze"
       dashboard:
         title: "Strona administracyjna"
         menu: "Kokpit"

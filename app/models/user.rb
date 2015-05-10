@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
     label "Użytkownik"
     label_plural "Użytkownicy"
     
-    field :id
     field :email
     field :last_sign_in_at do
       label "Data ostatniego logowania"

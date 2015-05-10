@@ -9,7 +9,6 @@ class Game < ActiveRecord::Base
         label "Gra"
         label_plural "Gry"
         
-        field :id
         field :name do
             label "Nazwa gry"
         end
