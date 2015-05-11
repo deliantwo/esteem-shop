@@ -32,7 +32,7 @@ class HomepageController < ApplicationController
   end
   
   def update_cart
-    if id = params[:ppg]
+    if id = params[:ppg] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
       ppg = PricePlatformGame.find(id)
       if shopping_cart.remove(ppg)
@@ -47,7 +47,7 @@ class HomepageController < ApplicationController
   end
   
   def cart_status
-    if id = params[:ppg]
+    if id = params[:ppg] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
       ppg = PricePlatformGame.find(id)
       if shopping_cart.remove(ppg)
