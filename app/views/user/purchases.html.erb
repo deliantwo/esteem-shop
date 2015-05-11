@@ -3,6 +3,9 @@
         Historia zamówień
     </h1>
     <div class="col-md-9">
+        <% if not @purchases.nil? %>
+            <h2>Brak zamówień</h2>
+        <% end %>
         <% @purchases.each do |p| %>
         <div class="panel panel-default">
               <div class="panel-body">
