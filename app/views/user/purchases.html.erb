@@ -7,7 +7,8 @@
         <div class="panel panel-default">
               <div class="panel-body">
                 <p>Zamówienie nr: <%= p[0].id %></p>
-                <p>Status zamówienia: <%= p[0].status %></p>
+                <p>Status zamówienia: <%= (p[0].status == 0 ? 'W realizacji' : 'Zrealizowano' ) %></p>
+                <p>Data zamówienia: <%= p[0].created_at %></p>
               </div>
               <table class="table">
                   <thead>
