@@ -1,6 +1,6 @@
 <div class="row">
     <h1 class="page-header text-left">
-        <small><a href="#">Wszystkie gry</a> > <a href="#"><%= @game.category.name %></a></small><br>
+        <small><a href="/">Wszystkie gry</a> > <%= @game.category.name %></small><br>
         <%= @game.name %>
     </h1>
     <div class="col-md-9">
@@ -20,9 +20,6 @@
         
         <h2>Opis gry</h2>
         <p><%= @game.description %></p>
-        
-        <p><%= @game.created_at %></p>
-        <p><%= @game.updated_at %></p>
     </div>
     
     <!-- panel boczny -->
@@ -30,10 +27,9 @@
         <div class="panel panel-default">
               <div class="panel-body">
                 Tytuł: <i><%= @game.name %></i><br>
-                Gatunek: <i><a href="#"><%= @game.category.name %></a></i><br>
-                Producent: <i><a href="#"><%= @game.producer.name %></a></i><br>
-                Wydawca: <i><a href="#"><%= @game.publisher.name %></a></i><br>
-                Data wydania: <i>wczoraj</i>
+                Gatunek: <i><%= @game.category.name %></i><br>
+                Producent: <i><%= @game.producer.name %></i><br>
+                Wydawca: <i><%= @game.publisher.name %></i><br>
               </div>
         </div>
     </div>
