@@ -9,7 +9,7 @@ class PaymentController < ApplicationController
     pay_on_paypal: true # if you don't plan on showing your own confirmation step
     }
   
-    request = Paypal::Express::Request.new(
+    paypal_request = Paypal::Express::Request.new(
       :username   => "esteembusiness_api1.gmail.com",
       :password   => "YFAHKSWRLTMQNBMZ",
       :signature  => "AFcWxV21C7fd0v3bYYYRCpSSRl31AUiHnZsA0bO2uIzZNs2hOTDwdWM7"
@@ -24,10 +24,10 @@ class PaymentController < ApplicationController
         LOGOIMG: "https://example.com/logo.png"
       }
     )
-    response = request.setup(
+    response = paypal_request.setup(
       payment_request,
-      'https://esteem-wojzag-2.c9.io/payment/success',
-      'https://esteem-wojzag-2.c9.io/payment/cancel',
+       request.protocol + request.host + '/payment/success',
+       request.protocol + request.host + '/payment/cancel',
       paypal_options  # Optional
     )
     current_purchase = Purchase.create(user: User.find_by(id: current_user.id), status: 0)
