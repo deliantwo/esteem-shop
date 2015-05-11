@@ -76,6 +76,7 @@ class PaymentController < ApplicationController
       end
       current_purchase.status = 1
       current_purchase.save!
+      @shopping_cart.clear
     end
     @payment_info = response.payment_info
     
