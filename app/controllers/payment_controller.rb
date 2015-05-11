@@ -1,6 +1,9 @@
 class PaymentController < ApplicationController
   before_filter :authenticate_user!
   def index
+    if @shopping_cart.total_unique_items == 0
+      redirect_to root_path
+    end
     @current_items = @shopping_cart.shopping_cart_items
     @current_price = @shopping_cart.total
     paypal_options = {

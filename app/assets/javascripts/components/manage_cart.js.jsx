@@ -5,16 +5,17 @@ var ManageCart = React.createClass({
         current_origin_ppg: this.props.current_origin_ppg,
         steam_price: this.props.steam_price,
         origin_price: this.props.origin_price,
-        steamAction: "Nie załadowano danych",
-        originAction: "Nie załadowano danych",
+        steamAction: "Produkt niedostępny",
+        originAction: "Produkt niedostępny",
         shopping_cart_id: this.props.shopping_cart_id,
         steam_img_url: this.props.steam_img_url,
-        origin_img_url: this.props.origin_img_url
+        origin_img_url: this.props.origin_img_url,
+        shopping_cart_token: this.props.shopping_cart_token
       };
     },
     componentDidMount: function (event) {
       var global_this = this
-      var json_getter = $.getJSON( "../cart_status.json?ppg=" + this.state.current_steam_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id, function( data ) {
+      var json_getter = $.getJSON( "../cart_status.json?ppg=" + this.state.current_steam_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
           $.each(data, function(index, element) {
             if(element == "in_cart") {
               global_this.setState({steamAction: "Usuń z koszyka"})
@@ -24,7 +25,7 @@ var ManageCart = React.createClass({
             }
     });
       })
-      var json_getter = $.getJSON( "../cart_status.json?ppg=" + this.state.current_origin_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id, function( data ) {
+      var json_getter = $.getJSON( "../cart_status.json?ppg=" + this.state.current_origin_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
           $.each(data, function(index, element) {
             if(element == "in_cart") {
               global_this.setState({originAction: "Usuń z koszyka"})
@@ -40,7 +41,7 @@ var ManageCart = React.createClass({
       var action = event.target.id
       var global_this = this
       if(action == "steam-cart") {
-        var json_getter = $.getJSON( "../update_cart.json?ppg=" + this.state.current_steam_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id, function( data ) {
+        var json_getter = $.getJSON( "../update_cart.json?ppg=" + this.state.current_steam_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
           $.each(data, function(index, element) {
             if(element == "added") {
               global_this.setState({steamAction: "Usuń z koszyka"})
@@ -52,7 +53,7 @@ var ManageCart = React.createClass({
       })
       }
       else if(action == "origin-cart") {
-        var json_getter = $.getJSON( "../update_cart.json?ppg=" + this.state.current_origin_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id, function( data ) {
+        var json_getter = $.getJSON( "../update_cart.json?ppg=" + this.state.current_origin_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
           $.each(data, function(index, element) {
             if(element == "added") {
               global_this.setState({originAction: "Usuń z koszyka"})
