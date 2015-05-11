@@ -23,6 +23,13 @@ Gamekey.create(content: "XXXXXXXXXXX2", price_platform_game: PricePlatformGame.f
 vat_23 = Vat.create(value: 23)
 
 test_user = User.new
+test_user.email = 'admin@admin.pl'
+test_user.password = '123456789'
+test_user.password_confirmation = '123456789'
+test_user.is_admin = true
+test_user.save!
+
+test_user = User.new
 test_user.email = 'user@user.pl'
 test_user.password = '123456789'
 test_user.password_confirmation = '123456789'

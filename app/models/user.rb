@@ -6,4 +6,29 @@ class User < ActiveRecord::Base
          
   has_many :gamekeys
   has_many :purchases
+  
+  def active_for_authentication?
+    super && !self.blocked? && !self.deleted?
+  end
+  
+  def custom_label_method
+      "#{self.email}"
+  end
+  
+  rails_admin do
+    object_label_method  :custom_label_method
+    label "Użytkownik"
+    label_plural "Użytkownicy"
+    
+    field :email
+    field :last_sign_in_at do
+      label "Data ostatniego logowania"
+    end
+    field :blocked do
+      label "Zablokowany?"
+    end
+    field :deleted do
+      label "Usunięty?"
+    end
+  end
 end
