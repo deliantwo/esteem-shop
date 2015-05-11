@@ -18,8 +18,8 @@
         <nav>
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Home",   root_path %></li>
-            <li><%= link_to "O sklepie",   '#' %></li>
-            <li><%= link_to "Partnerzy", '#' %></li>
+            <li><%= link_to "O sklepie", controller: "/staticpages", action: "about" %></li>
+            <li><%= link_to "Partnerzy", controller: "/staticpages", action: "partnership"  %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

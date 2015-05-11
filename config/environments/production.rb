@@ -78,6 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.react.variant = :production
+  
+  config.action_mailer.default_url_options = {:host => '192.168.56.101'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :address => "127.0.0.1",
+  :port    => 25,
+  :domain  => '192.168.56.101'
+}
+  
 
   Paypal.sandbox!
 
