@@ -81,7 +81,7 @@ Rails.application.configure do
   
   Paypal.sandbox!
 
-  config.action_mailer.default_url_options = { :host => 'localhost:25' }
+  config.action_mailer.default_url_options = { :host => '192.168.56.101' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false

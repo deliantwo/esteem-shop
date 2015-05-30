@@ -112,9 +112,6 @@ class HomepageController < ApplicationController
       shopping_cart = ShoppingCart.find_by(id: id)
       shopping_cart.shopping_cart_items[item_id].quantity = quantity
       shopping_cart.shopping_cart_items[item_id].save
-      if quantity == 0
-        shopping_cart.shopping_cart_items[item_id].destroy!
-      end
       render json: {status: "success"}, status: 200
     else
       render json: {status: "error"}, status: 200
