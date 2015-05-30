@@ -28,8 +28,10 @@ class UserController < ApplicationController
   
   def keys
     all_keys = Gamekey.where(user: current_user)
+    
     @key_infos = []
     all_keys.each do |key|
+
       ppg = PricePlatformGame.find(key.price_platform_game_id)
       platform = Platform.find(ppg.platform_id)
       game = Game.find(ppg.game_id)

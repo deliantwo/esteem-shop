@@ -56,7 +56,7 @@ create_keys(create_ppg(gta, steam, 200), 3)
 create_keys(create_ppg(twm, steam, 120), 1)
 create_keys(create_ppg(sims, origin, 220), 4)
 create_keys(create_ppg(wasteland, steam, 160), 3)
-create_keys(create_ppg(acu, steam, 180), 4)
+create_keys(create_ppg(acu, steam, 180), 14)
 
 Gamekey.create(content: "XXXXXXXXXXX1", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc: Evolved"), platform: Platform.find_by(name: "Steam")))
 Gamekey.create(content: "XXXXXXXXXXX2", price_platform_game: PricePlatformGame.find_by(game: Game.find_by(name: "Plague Inc: Evolved"), platform: Platform.find_by(name: "Steam")))
