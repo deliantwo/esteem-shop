@@ -35,6 +35,13 @@ class HomepageController < ApplicationController
     if id = params[:ppg] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
       ppg = PricePlatformGame.find(id)
+      
+      gamekey = Gamekey.find_by(price_platform_game: ppg, user: nil)
+      unless gamekey
+        render json: {status: "no_keys"}, status: 200
+        return
+      end
+      
       if shopping_cart.remove(ppg)
         while k = shopping_cart.remove(ppg)
         end
@@ -52,6 +59,15 @@ class HomepageController < ApplicationController
     if id = params[:ppg] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
       ppg = PricePlatformGame.find(id)
+
+
+      gamekey = Gamekey.find_by(price_platform_game: ppg, user: nil)
+      unless gamekey
+        render json: {status: "no_keys"}, status: 200
+        return
+      end
+
+
       if shopping_cart.remove(ppg)
         shopping_cart.add(ppg, ppg.price)
         render json: {status: "in_cart"}, status: 200

@@ -23,6 +23,9 @@ var ManageCart = React.createClass({
             else if(element == "not_in_cart") {
               global_this.setState({steamAction: "Dodaj do koszyka"})
             }
+            else if(element == "no_keys") {
+              global_this.setState({steamAction: "Produkt niedostępny"})
+            }
     });
       })
       var json_getter = $.getJSON( "../cart_status.json?ppg=" + this.state.current_origin_ppg.id + "&shopping_cart_id=" + this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token, function( data ) {
@@ -32,6 +35,9 @@ var ManageCart = React.createClass({
             }
             else if(element == "not_in_cart") {
               global_this.setState({originAction: "Dodaj do koszyka"})
+            }
+            else if(element == "no_keys") {
+              global_this.setState({steamAction: "Produkt niedostępny"})
             }
     });
       })
@@ -49,6 +55,9 @@ var ManageCart = React.createClass({
             else if(element == "removed") {
               global_this.setState({steamAction: "Dodaj do koszyka"})
             }
+            else if(element == "no_keys") {
+              global_this.setState({steamAction: "Produkt niedostępny"})
+            }
     });
       })
       }
@@ -60,6 +69,9 @@ var ManageCart = React.createClass({
             }
             else if(element == "removed") {
               global_this.setState({originAction: "Dodaj do koszyka"})
+            }
+            else if(element == "no_keys") {
+              global_this.setState({steamAction: "Produkt niedostępny"})
             }
     });
       })
