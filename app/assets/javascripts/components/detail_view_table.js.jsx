@@ -24,7 +24,7 @@ var DetailViewTable = React.createClass({
             var temp = global_this.state.rows
             temp.push(<tr>
             <td>{index}</td>
-            <td><a href="#">{element.name}</a></td>
+            <td><a href={"/games/" + element.id}>{element.name}</a></td>
             <td>{element.platform.name}</td>
             <td>{global_this.toFixed(element.price,2) + " zł"}</td>
             <td><input type="number" name={"quantityInput_" + (index - 1)} min="0" max="99" value={element.quantity} onChange={global_this.handleQuantityChange}></input></td>
@@ -43,6 +43,9 @@ var DetailViewTable = React.createClass({
           $.each(data, function(index, element) {
               if(element == "success") {
                   global_this.updateCart()
+              }
+              else{
+                  return
               }
           })
       })

@@ -13,7 +13,7 @@ class HomepageController < ApplicationController
   def search
     games = Game.all
     if name = params[:name]
-      games = games.where('name LIKE ?', "%#{name}%")
+      games = games.where('lower(name) LIKE ?', "%#{name}%")
     end
     if cat = params[:category]
       games = games.where(category: Category.find_by(name: cat))
@@ -107,7 +107,7 @@ class HomepageController < ApplicationController
       shopping_cart = ShoppingCart.find_by(id: id)
       shopping_cart.shopping_cart_items.each do |d|
         price = d.item.price + (d.item.price * @vat)
-        json[iterator] = { name: d.item.game.name, platform: d.item.platform, price: price, quantity: d.quantity }
+        json[iterator] = { id: d.item.game.id, name: d.item.game.name, platform: d.item.platform, price: price, quantity: d.quantity }
         iterator += 1
       end
       if json == {}
@@ -121,6 +121,10 @@ class HomepageController < ApplicationController
   end
   
   def change_quantity
+    if params[:quantity] == ""
+      render json: {status: "error"}, status: 200
+      return
+    end
     quantity = params[:quantity].to_i
     item_id = params[:item_id].to_i
     if quantity < 0
