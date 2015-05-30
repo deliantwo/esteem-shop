@@ -86,6 +86,7 @@ class PaymentController < ApplicationController
   end
   
   def cancel
+    current_purchase = Purchase.find_by(user: User.find_by(id: current_user.id), status: 0)
     pending_products = SoldProduct.where(purchase: current_purchase)
     pending_products.each do |s|
       s.destroy!

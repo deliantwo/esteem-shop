@@ -29,7 +29,7 @@ var DetailViewTable = React.createClass({
             <td>{global_this.toFixed(element.price,2) + " zł"}</td>
             <td><input type="number" name={"quantityInput_" + (index - 1)} min="0" max="99" value={element.quantity} onChange={global_this.handleQuantityChange}></input></td>
             <td>{global_this.toFixed(element.price * element.quantity,2) + " zł"}</td>
-            <td><a type="button" className="close" href="#" ><span aria-hidden="true">&times;</span></a></td></tr>)
+            <td><a onClick={global_this.handleRemove} name={"removeBtn_" + (index - 1)} type="button" className="close" href="#" ><span aria-hidden="true">&times;</span></a></td></tr>)
            global_this.setState({rows: temp})
     });
       })
@@ -40,6 +40,19 @@ var DetailViewTable = React.createClass({
         var num = parseInt(splitted[1])
         var global_this = this
       $.getJSON( "../change_quantity.json?shopping_cart_id=" + global_this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token + "&item_id=" + num + "&quantity=" + event.target.value, function( data ) {
+          $.each(data, function(index, element) {
+              if(element == "success") {
+                  global_this.updateCart()
+              }
+          })
+      })
+    },
+    
+    handleRemove: function (event) {
+        var splitted = event.currentTarget.name.split("_")
+        var num = parseInt(splitted[1])
+        var global_this = this
+      $.getJSON( "../change_quantity.json?shopping_cart_id=" + global_this.state.shopping_cart_id + "&shopping_cart_token=" + global_this.state.shopping_cart_token + "&item_id=" + num + "&quantity=0", function( data ) {
           $.each(data, function(index, element) {
               if(element == "success") {
                   global_this.updateCart()
