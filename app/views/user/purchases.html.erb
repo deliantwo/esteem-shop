@@ -20,16 +20,20 @@
                         <th>Platforma</th>
                         <th>Cena brutto</th>
                         <th>VAT</th>
+                        <th>Liczba sztuk</th>
+                        <th>Wartość brutto</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% p[1].each do |sp| %>
+                    <% p[1].each do |key, value| %>
                     <tr>
-                        <td><%= sp[1].name %></td>
-                        <td><%= sp[2].name %></td>
-                        <td><%= sprintf( "%.2f", sp[0].price + (sp[0].price * @vat)) %> zł</td>
-                        <td><%= sp[3].value %>%</td>
-                        
+                        <% price =  (p[1][key][1].price + (p[1][key][1].price * @vat)).round(2) %>
+                        <td><%= p[1][key][2].name %></td>
+                        <td><%= p[1][key][3].name %></td>
+                        <td><%= sprintf("%.2f", price) %> zł</td>
+                        <td><%= p[1][key][4].value %>%</td>
+                        <td><%= p[1][key][0] %></td>
+                        <td><%= sprintf("%.2f", price * p[1][key][0]) %></td>
                     </tr>
                     <% end %>
                 </tbody>
