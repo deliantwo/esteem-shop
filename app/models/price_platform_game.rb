@@ -19,12 +19,15 @@ class PricePlatformGame < ActiveRecord::Base
         
         field :game do
             label "Gra"
+            required true
         end
         field :platform do
             label "Platforma"
+            required true
         end
         field :price do
             label "Cena"
+            required true
         end
 
     end

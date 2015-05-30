@@ -17,13 +17,18 @@ class SoldProduct < ActiveRecord::Base
         
         field :purchase do
             label "Zamówienie"
+            required true
         end
         field :gamekey do 
             label "Klucz"
+            required true
         end
-        field :vat
+        field :vat do
+            required true
+        end
         field :price do
             label "Cena"
+            required true
         end
     end
 end

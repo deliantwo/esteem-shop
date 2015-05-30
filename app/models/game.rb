@@ -11,18 +11,22 @@ class Game < ActiveRecord::Base
         
         field :name do
             label "Nazwa gry"
+            required true
         end
         field :description do 
             label "Opis gry"
         end
         field :category do
             label "Kategoria"
+            required true
         end
         field :producer do
             label "Producent"
+            required true
         end
         field :publisher do
             label "Wydawca"
+            required true
         end
     end
 end

@@ -7,6 +7,7 @@ class Category < ActiveRecord::Base
         
         field :name do
             label "Nazwa"
+            required true
         end
     end
 end

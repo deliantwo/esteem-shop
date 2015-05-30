@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     super && !self.blocked? && !self.deleted?
   end
   
+  def inactive_message
+    !self.blocked? ? super : (I18n.t 'devise.failure.blocked')
+  end
+  
   def custom_label_method
       "#{self.email}"
   end

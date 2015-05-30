@@ -17,9 +17,11 @@ class Gamekey < ActiveRecord::Base
         end
         field :content do
             label "Zawartość"
+            required true
         end
         field :price_platform_game do
             label "Gra"
+            required true
         end
         field :sold_product do
             label "Sprzedany produkt"

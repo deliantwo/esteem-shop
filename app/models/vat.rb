@@ -14,6 +14,7 @@ class Vat < ActiveRecord::Base
         
         field :value do
             label "Wartość"
+            required true
         end
 
     end

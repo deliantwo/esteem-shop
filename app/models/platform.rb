@@ -8,6 +8,7 @@ class Platform < ActiveRecord::Base
         
         field :name do
             label "Nazwa"
+            required true
         end
     end
 end

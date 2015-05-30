@@ -1,5 +1,6 @@
 require 'i18n'
 require Rails.root.join('lib', 'rails_admin_add_keys.rb')
+require Rails.root.join('lib', 'rails_admin_delete_override.rb')
 
 I18n.enforce_available_locales = false
 I18n.default_locale = :pl
@@ -44,7 +45,7 @@ RailsAdmin.config do |config|
     end
     export
     
-    add_keys
+    #add_keys
     
     bulk_delete
     show 

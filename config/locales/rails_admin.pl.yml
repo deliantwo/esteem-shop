@@ -25,6 +25,7 @@ pl:
     flash:
       successful: "%{name} pomyślnie %{action}"
       error: "%{name} nie powiodło się %{action}"
+      error_val: "%{name} nie powiodło się %{action}. Nie można usunąć zrealizowanej transakcji."
       noaction: "Żadne akcje nie zostały przeprowadzone"
       model_not_found: "Model '%{model}' nie został znaleziony"
       object_not_found: "%{model} z ID '%{id}' nie został znaleziony"
