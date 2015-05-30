@@ -7,7 +7,10 @@
         <div class="panel panel-default">
               <div class="panel-body">
                   <p>Poniżej znajduje się lista kluczy do gier, które kupiłeś.</p>
-              </div>
+              
+              <% if  @key_infos.nil? %>
+            
+                </div>
               <table class="table">
                   <thead>
                     <tr>
@@ -26,6 +29,10 @@
                     <% end %>
                 </tbody>
               </table>
+              <% else %>
+              <h2>Brak kluczy</h2>
+              </div>
+              <% end %>
         </div>
     </div>
     
