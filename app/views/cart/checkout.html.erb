@@ -37,7 +37,7 @@
             </table>
             <div class="panel-body text-right">
                 <h3>Razem: <strong><%= sprintf( "%.2f", @shopping_cart.total) %> zł</strong></h3>
-                <a class="btn btn-primary" href=<%= payment_test_path %>>Potwierdź</a>
+                <%= react_component('DisableCheckoutButton', payment_test_path: payment_test_path, :prerender => true) %>
             </div>
         </div>
     </div>
