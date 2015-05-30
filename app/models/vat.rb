@@ -1,5 +1,6 @@
 class Vat < ActiveRecord::Base
     has_many :sold_products
+    validates_numericality_of :value, :greater_than_or_equal_to => 0
     
     
     def custom_label_method

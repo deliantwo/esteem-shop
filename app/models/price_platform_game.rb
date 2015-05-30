@@ -3,6 +3,8 @@ class PricePlatformGame < ActiveRecord::Base
     belongs_to :platform
     belongs_to :game
     
+    validates_numericality_of :price, :greater_than_or_equal_to => 0
+    
     def custom_label_method
         unless self.game.nil? then
             return "#{self.game.name} (#{self.platform.name})"
