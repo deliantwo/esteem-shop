@@ -36,6 +36,8 @@ class HomepageController < ApplicationController
       shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
       ppg = PricePlatformGame.find(id)
       if shopping_cart.remove(ppg)
+        while k = shopping_cart.remove(ppg)
+        end
         render json: {status: "removed"}, status: 200
       else
         shopping_cart.add(ppg, ppg.price)

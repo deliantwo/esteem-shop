@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/payment/test' => 'payment#index', as: :payment_test
   get '/payment/success' => 'payment#success', as: :payment_success
   get '/payment/cancel' => 'payment#cancel', as: :payment_cancel
+  get '/payment/no_keys' => 'payment#no_keys', as: :payment_no_keys
   
   get '/about' => 'staticpages#about', as: :static_about
   get '/partnership' => 'staticpages#partnership', as: :static_partnership

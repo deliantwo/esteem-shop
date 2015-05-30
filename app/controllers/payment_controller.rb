@@ -34,12 +34,24 @@ class PaymentController < ApplicationController
       paypal_options  # Optional
     )
     current_purchase = Purchase.create(user: User.find_by(id: current_user.id), status: 0)
+
     @current_items.each do |i|
       for k in 0..i.quantity-1 do
         gamekey = Gamekey.find_by(price_platform_game: i.item, user: nil)
-        #binding.pry
-        #gamekey.user = User.find_by(id: current_user.id) # pending, by user przypadkiem nie dostał klucza nim skończy zakup
-        #gamekey.save!
+        
+        unless gamekey
+          current_purchase = Purchase.find_by(user: User.find_by(id: current_user.id), status: 0)
+          pending_products = SoldProduct.where(purchase: current_purchase)
+          pending_products.each do |s|
+            s.destroy!
+          end
+          current_purchase.destroy!
+          @shopping_cart.clear
+          redirect_to payment_no_keys_path
+          return
+        end
+        gamekey.user = User.find(1) # pending, by user przypadkiem nie dostał klucza nim skończy zakup
+        gamekey.save!
         SoldProduct.create(purchase: current_purchase, gamekey: gamekey, vat: Vat.find(Rails.application.config.current_vat_id), price: i.item.price)
       end
     end
@@ -92,5 +104,8 @@ class PaymentController < ApplicationController
       s.destroy!
     end
     current_purchase.destroy!
+  end
+  
+  def no_keys
   end
 end
