@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20150417001857) do
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: "f", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "gamekeys", force: :cascade do |t|
@@ -53,22 +53,22 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   end
 
   create_table "producers", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: "f", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "publishers", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: "f", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    default: 0, null: false
+    t.integer  "status",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "shopping_cart_items", force: :cascade do |t|
@@ -88,12 +88,12 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   end
 
   create_table "sold_products", force: :cascade do |t|
-    t.integer  "purchase_id"
-    t.integer  "gamekey_id"
-    t.integer  "vat_id"
-    t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "purchase_id", default: 0,   null: false
+    t.integer  "gamekey_id",  default: 0,   null: false
+    t.integer  "vat_id",      default: 0,   null: false
+    t.decimal  "price",       default: 0.0, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(version: 20150417001857) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vats", force: :cascade do |t|
-    t.decimal  "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "value",      default: 0.0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end
