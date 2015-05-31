@@ -23,7 +23,7 @@
                     <% @shopping_cart.shopping_cart_items.each do |i| %>
                     <tr>
                         <td><%= iterator %></td>
-                        <td><a href="#"><%= i.item.game.name %></a>
+                        <td><a href=<%= games_path + "/" + i.item.game.id.to_s %>><%= i.item.game.name %></a>
                         </td>
                         <td><%= i.item.platform.name %></td>
                         <% price = i.item.price + (i.item.price * @vat) %>
