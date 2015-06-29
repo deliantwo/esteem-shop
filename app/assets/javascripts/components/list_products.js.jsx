@@ -14,15 +14,23 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json", function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
+          temp.push(<div onClick={global_this.handleRedirect} id={"game-" + element.id} className="panel panel-default game-item"><div id={"gamebody1-" + element.id} className="panel-body"><h2 id={"gamebody2-" + element.id} className="nomargin"><span id={"gamebody3-" + element.id} className="game-item-link">{element.name}</span></h2><p id={"gamebody4-" + element.id}>Kategoria: <i><span id={"gamebody5-" + element.id} className="game-item-category" href="#">{element.category}</span></i></p><p><span id={"gamebody6-" + element.id} className="game-item-desc">{element.description}</span></p><h3 id={"gamebody7-" + element.id} className="nomargin text-right game-item-price"><small id={"gamebody8-" + element.id} >Cena:</small><span id={"gamebody9-" + element.id}>{global_this.toFixed(element.price,2) + " zł"}</span></h3></div></div>)
           global_this.setState({rows: temp})
     });
       })
       for(var i=0;i<this.state.categories.length;i++) {
         var temp = global_this.state.categories_rows
-        temp.push(<a className="list-group-item" id={this.state.categories[i].name + "-category"} onClick={this.handleCategoryChange}>{this.state.categories[i].name}</a>)
+        temp.push(<input type="button" className="list-group-item" id={this.state.categories[i].name + "-category"} onClick={this.handleCategoryChange} value={this.state.categories[i].name}></input>)
         global_this.setState({categories_rows: temp})
       }
+      
+    },
+    handleRedirect: function(event) {
+      $(function(){
+        var splitted = event.target.id.split("-");
+        var num = parseInt(splitted[1]);
+        location.href='/games/' + num;
+      });
     },
   handleSearchButton: function(event) {
       var global_this = this
@@ -32,7 +40,7 @@ var ListProducts = React.createClass({
       var json_getter = $.getJSON( "search.json?name=" + search_value, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
+          temp.push(<div onClick={global_this.handleRedirect} id={"game-" + element.id} className="panel panel-default game-item"><div id={"gamebody1-" + element.id} className="panel-body"><h2 id={"gamebody2-" + element.id} className="nomargin"><span id={"gamebody3-" + element.id} className="game-item-link">{element.name}</span></h2><p id={"gamebody4-" + element.id}>Kategoria: <i><span id={"gamebody5-" + element.id} className="game-item-category" href="#">{element.category}</span></i></p><p><span id={"gamebody6-" + element.id} className="game-item-desc">{element.description}</span></p><h3 id={"gamebody7-" + element.id} className="nomargin text-right game-item-price"><small id={"gamebody8-" + element.id} >Cena:</small><span id={"gamebody9-" + element.id}>{global_this.toFixed(element.price,2) + " zł"}</span></h3></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -40,13 +48,13 @@ var ListProducts = React.createClass({
     
     handleCategoryChange: function(event) {
       var global_this = this
-      var category_name = event.target.text
+      var category_name = event.target.value
       this.setState({rows: []})
       var search_value = $("#search-input").val();
       var json_getter = $.getJSON( "search.json?name=" + search_value +"&category=" + category_name, function( data ) {
         $.each(data, function(index, element) {
           var temp = global_this.state.rows
-          temp.push(<div className="panel panel-default"><div className="panel-body"><h2 className="nomargin"><a href={'games/' + element.id}>{element.name}</a></h2><p>Kategoria: <i><a href="#">{element.category}</a></i></p><p>{element.description}</p><h2 className="nomargin text-right"><small>Cena:</small>{global_this.toFixed(element.price,2) + " zł"}</h2></div></div>)
+          temp.push(<div onClick={global_this.handleRedirect} id={"game-" + element.id} className="panel panel-default game-item"><div id={"gamebody1-" + element.id} className="panel-body"><h2 id={"gamebody2-" + element.id} className="nomargin"><span id={"gamebody3-" + element.id} className="game-item-link">{element.name}</span></h2><p id={"gamebody4-" + element.id}>Kategoria: <i><span id={"gamebody5-" + element.id} className="game-item-category" href="#">{element.category}</span></i></p><p><span id={"gamebody6-" + element.id} className="game-item-desc">{element.description}</span></p><h3 id={"gamebody7-" + element.id} className="nomargin text-right game-item-price"><small id={"gamebody8-" + element.id} >Cena:</small><span id={"gamebody9-" + element.id}>{global_this.toFixed(element.price,2) + " zł"}</span></h3></div></div>)
           global_this.setState({rows: temp})
     });
       })
@@ -78,7 +86,6 @@ var ListProducts = React.createClass({
         return <div className="row">
         <div className="col-md-3">
           <div className="list-group">
-            <span className="list-group-item">Kategorie</span>
             {this.state.categories_rows}
           </div>
         </div>
@@ -86,14 +93,14 @@ var ListProducts = React.createClass({
           <div className="input-group" role="search">
             <input id="search-input" type="text" className="form-control" placeholder="Search"></input>
             <span className="input-group-btn">
-              <button onClick={this.handleSearchButton} id="search-btn" type="button" className="btn btn-default">Search</button>
+              <button onClick={this.handleSearchButton} id="search-btn" type="button" className="btn btn-default">
+                <span className="glyphicon glyphicon-search"></span> Search
+              </button>
             </span>
           </div>
-          
-          <h1>Polecane gry</h1>
-          
+          <div className="game-item-list">
           {this.state.rows}
-
+          </div>
         </div>
           </div>
           

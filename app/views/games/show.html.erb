@@ -1,16 +1,16 @@
 <div class="row">
-    <h1 class="page-header text-left">
-        <small><a href="/">Wszystkie gry</a> > <%= @game.category.name %></small><br>
-        <%= @game.name %>
-    </h1>
+    <h2 class="page-header text-left">
+        <small  class="text-white"><a  class="text-white" href="/">Wszystkie gry</a> > <%= @game.category.name %></small><br>
+        <span  class="text-white"><%= @game.name %></span>
+    </h2>
     <div class="col-md-9">
         <div class="text-center">
             <p><img src="<%= asset_path 'filler_600x337.jpg' %>" alt="Zdjęcie gry"></p>
         </div>
-        <div class="well">
+        <div class="well dark-background">
             <div class="row">
                 <div class="col-md-7 vcenter">
-                    <span class="buytext">Kup <%= @game.name %></span>
+                    <span class="buytext text-white">Kup <%= @game.name %></span>
                 </div><!-- Ten komentarz to hax stylowy, nie usuwać!
                 --><div class="col-md-5 vcenter">
                         <%= react_component('ManageCart', shopping_cart_id: @shopping_cart.id, steam_price: @steam_price, origin_price: @origin_price, steam_img_url: (asset_path 'steam_20x20.png'), origin_img_url: (asset_path 'origin_20x20.png'), current_steam_ppg: @current_steam_ppg, current_origin_ppg: @current_origin_ppg, shopping_cart_token: session[:cart_token], :prerender => true) %>
@@ -18,14 +18,14 @@
             </div>
         </div>
         
-        <h2>Opis gry</h2>
-        <p><%= @game.description %></p>
+        <h3 class="text-white">Opis gry</h3>
+        <p class="text-white"><%= @game.description %></p>
     </div>
     
     <!-- panel boczny -->
     <div class="col-md-3">
         <div class="panel panel-default">
-              <div class="panel-body">
+              <div class="panel-body dark-background text-white">
                 Tytuł: <i><%= @game.name %></i><br>
                 Gatunek: <i><%= @game.category.name %></i><br>
                 Producent: <i><%= @game.producer.name %></i><br>

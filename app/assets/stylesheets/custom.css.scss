@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "compass/css3";
 
 /* mixins, variables, etc. */
 
@@ -9,6 +10,8 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-image: url("website-background.jpg");
+  background-color: #cccccc;
 }
 
 section {
@@ -124,4 +127,104 @@ footer {
   background-color: DimGray;
   background-image: none;
   filter: none;
+}
+.list-group-item {
+  display: inline-block;
+  @include box-sizing(content-box);
+  cursor: pointer;
+  width: 150px;
+  padding: 10px 20px;
+  margin-bottom: 2px;
+  border: 1px solid rgba(130,130,130,0.9);
+  @include border-radius(3px);
+  font: normal 16px/normal "Amarante", Helvetica, sans-serif;
+  color: rgba(239,239,239,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  @include background(rgb(31,31,31));
+  @include box-shadow(2px 2px 2px 0 rgba(0,0,0,0.2) );
+  @include text-shadow(-1px -1px 0 rgba(15,73,168,0.66) );
+  @include transition(all 150ms cubic-bezier(0.42, 0, 0.58, 1));
+}
+.list-group-item:hover {
+  border: 1px solid rgba(227,230,232,0.9);
+  color: rgba(255,255,255,0.9);
+  -webkit-box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+}
+
+.navbar {
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+}
+
+.recomended-titles-text {
+  color: rgba(255,255,255,0.9);
+}
+
+.game-item {
+  @include background(rgb(31,31,31));
+  border: 1px solid rgba(130,130,130,0.9);
+  @include border-radius(3px);
+  color: rgba(255,255,255,0.9);
+  margin: 5px 0px;
+  @include transition(all 150ms cubic-bezier(0.42, 0, 0.58, 1));
+}
+
+.game-item:hover {
+  border: 1px solid rgba(227,230,232,0.9);
+  color: rgba(255,255,255,0.9);
+  -webkit-box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  cursor: pointer;
+}
+.game-item-list {
+  margin-top: 10px;
+}
+
+.game-item-link {
+  color: rgba(255,255,255,0.9);
+}
+
+.game-item-desc {
+  color: rgba(255,255,255,0.9);
+}
+
+.game-item-category {
+  color: rgba(255,255,255,0.9);
+}
+
+.game-item-price {
+  color: rgba(255,255,255,0.9);
+}
+
+.text-white {
+  color: rgba(255,255,255,0.9);
+}
+
+.dark-background {
+  @include background(rgb(31,31,31));
+}
+
+.game-item-panel {
+  display: block;
+  height: 100%;
+}
+#search-input {
+  @include transition(all 150ms cubic-bezier(0.42, 0, 0.58, 1));
+}
+#search-input:hover {
+  -webkit-box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  cursor: pointer;
+}
+#search-input:focus {
+  -webkit-box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  -webkit-box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 6px 2px rgba(255,0,0,0.5) , 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  cursor: pointer;
 }
