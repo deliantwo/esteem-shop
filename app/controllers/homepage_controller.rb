@@ -28,7 +28,7 @@ class HomepageController < ApplicationController
       end
       { :id => u.id, :name => u.name, :description => u.description, :category => u.category.name, :producer => u.producer.name, :publisher => u.publisher.name, :image_url => u.image_url, :price => price }
     end
-    render json: games, status: 200
+    render json: games, status: :ok
   end
   
   def update_cart
@@ -48,7 +48,7 @@ class HomepageController < ApplicationController
         render json: {status: "removed"}, status: 200
       else
         shopping_cart.add(ppg, ppg.price)
-        render json: {status: "added"}, status: 200
+        render json: {status: "added"}, status: :ok
       end
     else
       render json: {status: "error"}, status: 200
@@ -70,7 +70,7 @@ class HomepageController < ApplicationController
 
       if shopping_cart.remove(ppg)
         shopping_cart.add(ppg, ppg.price)
-        render json: {status: "in_cart"}, status: 200
+        render json: {status: "in_cart"}, status: :ok
       else
         render json: {status: "not_in_cart"}, status: 200
       end
@@ -93,7 +93,7 @@ class HomepageController < ApplicationController
       if json == {}
         render json: {status: "empty"}, status: 200
       else
-        render json: json, status: 200
+        render json: json, status: :ok
       end
     else
       render json: {status: "error"}, status: 200
@@ -113,7 +113,7 @@ class HomepageController < ApplicationController
       if json == {}
         render json: {status: "empty"}, status: 200
       else
-        render json: json, status: 200
+        render json: json, status: :ok
       end
     else
       render json: {status: "error"}, status: 200
@@ -137,7 +137,7 @@ class HomepageController < ApplicationController
       if quantity == 0
         shopping_cart.shopping_cart_items[item_id].destroy!
       end
-      render json: {status: "success"}, status: 200
+      render json: {status: "success"}, status: :ok
     else
       render json: {status: "error"}, status: 200
     end
@@ -147,7 +147,7 @@ class HomepageController < ApplicationController
     if id = params[:shopping_cart_id] and params[:shopping_cart_token] == session[:cart_token]
       shopping_cart = ShoppingCart.find_by(id: id)
       total = shopping_cart.total
-      render json: {total: total}, status: 200
+      render json: {total: total}, status: :ok
     else
       render json: {status: "error"}, status: 200
     end
